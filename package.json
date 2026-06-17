@@ -6,22 +6,46 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+
+    "postinstall": "prisma generate",
+    
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+
+    "db:seed": "ts-node prisma/seed.ts",
+    "db:reset": "prisma migrate reset --force --skip-seed",
+
+    "db:push": "prisma db push",
+    "db:pull": "prisma db pull",
+    "db:diff": "prisma diff",
+    "db:deploy": "prisma migrate deploy",
+    "db:status": "prisma migrate status",
+
+    "db:generate:watch": "prisma generate --watch",
+    "db:migrate:watch": "prisma migrate dev --watch"
   },
   "packageManager": "bun",
   "dependencies": {
     "@base-ui/react": "^1.5.0",
     "@hugeicons/core-free-icons": "^4.2.0",
     "@hugeicons/react": "^1.1.7",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "@tanstack/react-query": "^5.101.0",
+    "@types/pg": "^8.20.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",
+    "dotenv": "^17.4.2",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "next": "16.2.9",
     "next-themes": "^0.4.6",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0",
     "radix-ui": "^1.6.0",
     "react": "19.2.4",
     "react-day-picker": "^10.0.1",
