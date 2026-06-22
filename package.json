@@ -8,23 +8,20 @@
     "start": "next start",
     "lint": "eslint",
 
-    "postinstall": "prisma generate",
+    "postinstall": "bun --bun run prisma generate",
+    "db:generate": "bun --bun run prisma generate",
+    "db:migrate": "bun --bun run prisma migrate dev",
+    "db:studio": "bun --bun run prisma studio",
     
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-
     "db:seed": "ts-node prisma/seed.ts",
-    "db:reset": "prisma migrate reset --force --skip-seed",
-
-    "db:push": "prisma db push",
-    "db:pull": "prisma db pull",
-    "db:diff": "prisma diff",
-    "db:deploy": "prisma migrate deploy",
-    "db:status": "prisma migrate status",
-
-    "db:generate:watch": "prisma generate --watch",
-    "db:migrate:watch": "prisma migrate dev --watch"
+    "db:reset": "bun --bun run prisma migrate reset --force --skip-seed",
+    "db:push": "bun --bun run prisma db push",
+    "db:pull": "bun --bun run prisma db pull",
+    "db:diff": "bun --bun run prisma diff",
+    "db:deploy": "bun --bun run prisma migrate deploy",
+    "db:status": "bun --bun run prisma migrate status",
+    "db:generate:watch": "bun --bun run prisma generate --watch",
+    "db:migrate:watch": "bun --bun run prisma migrate dev --watch"
   },
   "packageManager": "bun",
   "dependencies": {
@@ -35,6 +32,7 @@
     "@prisma/client": "^7.8.0",
     "@tanstack/react-query": "^5.101.0",
     "@types/pg": "^8.20.0",
+    "better-auth": "^1.6.19",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
