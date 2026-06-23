@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client";
 
-const globalForPrisma = globalThis as unknown as { 
-    prisma: PrismaClient 
+const globalForPrisma = globalThis as unknown as {
+    prisma: PrismaClient;
 };
 
 export function createPrismaClient() {

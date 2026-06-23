@@ -3,23 +3,22 @@
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
-import { SIGN_IN_URL as SIGN_IN_PATH } from "@/features/auth/utils"
+import { SIGN_IN_URL as SIGN_IN_PATH } from "@/features/auth/utils";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-    DropdownMenu, 
-    DropdownMenuContent, 
-    DropdownMenuItem, 
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuGroup,
-    DropdownMenuSeparator, 
-    DropdownMenuTrigger
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CircleChevronUpIcon, Logout01Icon } from "@hugeicons/core-free-icons";
-
 
 const DEFAULT_PLAN = "Free";
 
@@ -53,26 +52,21 @@ export function getInitials(user: UserMenu) {
     return source.substring(0, 2).toUpperCase();
 }
 
-function UserAvatar({ 
-    user, 
-    size = "default" 
-}: { 
-    user: UserMenu; 
-    size?: "default" | "sm" | "lg" 
+function UserAvatar({
+    user,
+    size = "default",
+}: {
+    user: UserMenu;
+    size?: "default" | "sm" | "lg";
 }) {
     return (
-        <Avatar
-            size={size}
-            className="size-8"
-        >
-            {
-                user.image ? ( <AvatarImage src={user.image} alt={getDisplayName(user)} /> ) : null
-            }
-            <AvatarFallback>
-                {getInitials(user)}
-            </AvatarFallback>
+        <Avatar size={size} className="size-8">
+            {user.image ? (
+                <AvatarImage src={user.image} alt={getDisplayName(user)} />
+            ) : null}
+            <AvatarFallback>{getInitials(user)}</AvatarFallback>
         </Avatar>
-    )
+    );
 }
 
 export function UserMenu({
@@ -103,11 +97,14 @@ export function UserMenu({
                     size={isCompact ? "icon" : "default"}
                     className={cn(
                         isCompact ? "rounded-full" : "h-9 gap-2 px-2",
-                        className,
+                        className
                     )}
                     aria-label="Open account menu"
                 >
-                    <UserAvatar user={user} size={isCompact ? "default" : "sm"} />
+                    <UserAvatar
+                        user={user}
+                        size={isCompact ? "default" : "sm"}
+                    />
                     {!isCompact ? (
                         <>
                             <span className="max-w-32 truncate text-left text-xs font-medium">
@@ -128,7 +125,9 @@ export function UserMenu({
                         <div className="flex items-start gap-2 px-2 py-2">
                             <UserAvatar user={user} />
                             <div className="flex min-w-0 flex-1 flex-col gap-1">
-                                <p className="truncate text-xs font-medium">{displayName}</p>
+                                <p className="truncate text-xs font-medium">
+                                    {displayName}
+                                </p>
                                 {user.email ? (
                                     <p className="truncate text-xs text-muted-foreground">
                                         {user.email}
@@ -143,7 +142,10 @@ export function UserMenu({
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem variant="destructive" onClick={handleSignOut}>
+                    <DropdownMenuItem
+                        variant="destructive"
+                        onClick={handleSignOut}
+                    >
                         <HugeiconsIcon icon={Logout01Icon} strokeWidth={2} />
                         Log out
                     </DropdownMenuItem>
@@ -152,7 +154,6 @@ export function UserMenu({
         </DropdownMenu>
     );
 }
-
 
 type UserMenuWithSessionProps = Omit<UserMenuProps, "user">;
 

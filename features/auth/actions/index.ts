@@ -3,14 +3,20 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { DEFAULT_AUTH_CALLBACK_URL, SIGN_IN_URL, getSafeCallbackPath } from "../utils/index"
+import {
+    DEFAULT_AUTH_CALLBACK_URL,
+    SIGN_IN_URL,
+    getSafeCallbackPath,
+} from "../utils/index";
 
 // Sign in with GitHub
 export async function signInWithGitHub(formData: FormData) {
     const callbackURL = formData.get("callbackUrl");
 
     const redirectTo = getSafeCallbackPath(
-        typeof callbackURL === "string" ? callbackURL : DEFAULT_AUTH_CALLBACK_URL,
+        typeof callbackURL === "string"
+            ? callbackURL
+            : DEFAULT_AUTH_CALLBACK_URL
     );
 
     const result = await auth.api.signInSocial({
@@ -30,7 +36,7 @@ export async function signInWithGitHub(formData: FormData) {
 export async function getServerSession() {
     return await auth.api.getSession({
         headers: await headers(),
-    })
+    });
 }
 
 // Require authentication

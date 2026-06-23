@@ -5,7 +5,10 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
 
-const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
+const jetbrainsMono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-mono",
+});
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -30,10 +33,17 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-mono", jetbrainsMono.variable)}
+            className={cn(
+                "h-full",
+                "antialiased",
+                geistSans.variable,
+                geistMono.variable,
+                "font-mono",
+                jetbrainsMono.variable
+            )}
             suppressHydrationWarning
         >
-            <body className="min-h-full flex flex-col">
+            <body className="flex min-h-full flex-col">
                 <QueryProvider>
                     <ThemeProvider
                         attribute="class"

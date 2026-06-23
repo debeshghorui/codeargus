@@ -1,25 +1,25 @@
-import React from 'react';
-import Image from 'next/image';
-import type { Metadata } from 'next';
+import React from "react";
+import Image from "next/image";
+import type { Metadata } from "next";
 import {
     Card,
     CardHeader,
     CardTitle,
     CardContent,
-    CardDescription
-} from '@/components/ui/card';
+    CardDescription,
+} from "@/components/ui/card";
 import {
     Field,
     FieldDescription,
     FieldGroup,
-    FieldSet
-} from '@/components/ui/field';
+    FieldSet,
+} from "@/components/ui/field";
 
-import GithubSignInForm from '@/features/auth/components/github-sign-in-form';
+import GithubSignInForm from "@/features/auth/components/github-sign-in-form";
 
 export const metadata: Metadata = {
-    title: 'Sign In',
-    description: 'Sign In to your account',
+    title: "Sign In",
+    description: "Sign In to your account",
 };
 
 type SignInPageProps = {
@@ -51,10 +51,13 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
                 <FieldSet>
                     <FieldGroup>
                         <Field>
-                            <GithubSignInForm callbackUrl={callbackUrl ?? "/"} />
+                            <GithubSignInForm
+                                callbackUrl={callbackUrl ?? "/"}
+                            />
                             <FieldDescription className="text-center">
-                                We only request the permissions needed to identify your
-                                account. You can revoke access anytime from GitHub settings.
+                                We only request the permissions needed to
+                                identify your account. You can revoke access
+                                anytime from GitHub settings.
                             </FieldDescription>
                         </Field>
                     </FieldGroup>
