@@ -1,3 +1,10 @@
+import {
+    DashboardSquare01Icon,
+    GitBranchIcon,
+    GithubIcon,
+    Settings01Icon,
+} from "@hugeicons/core-free-icons";
+
 export const DASHBOARD_ROUTES = {
     overview: "/dashboard",
     repos: "/dashboard/repos",
@@ -13,26 +20,26 @@ export const DASHBOARD_NAV_ITEMS = [
     {
         title: "Overview",
         href: DASHBOARD_ROUTES.overview,
-        icon: "layout-dashboard" as const,
+        icon: DashboardSquare01Icon,
     },
     {
         title: "Repositories",
         href: DASHBOARD_ROUTES.repos,
-        icon: "folder-git-2" as const,
+        icon: GitBranchIcon,
     },
     {
         title: "PullRequests",
         href: DASHBOARD_ROUTES.pullRequest,
-        icon: "folder-git-2" as const,
+        icon: GitBranchIcon,
     },
     {
         title: "GitHub App",
         href: DASHBOARD_ROUTES.github,
-        icon: "github" as const,
+        icon: GithubIcon,
     },
     {
         title: "Settings",
         href: DASHBOARD_ROUTES.settings,
-        icon: "settings" as const,
+        icon: Settings01Icon,
     },
 ] as const;

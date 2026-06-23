@@ -1,5 +1,5 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { DashboardSidebar } from "@/features/dashboard/components/dashboard-sidebarr";
+import { DashboardSidebar } from "@/features/dashboard/components/dashboard-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { UserMenu } from "@/features/auth/components/user-menu";
 

@@ -32,27 +32,27 @@ export function DashboardSidebar({
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton
+                            asChild
                             size="lg"
                             tooltip="ChaiCodeAIReview"
-                            render={
-                                <Link href={DASHBOARD_ROUTES.overview}>
-                                    <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-none bg-sidebar">
-                                        <Image
-                                            src="/logo2.svg"
-                                            alt=""
-                                            width={62}
-                                            height={62}
-                                            className="object-contain"
-                                        />
+                        >
+                            <Link href={DASHBOARD_ROUTES.overview}>
+                                <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-none bg-sidebar">
+                                    <Image
+                                        src="/logo2.svg"
+                                        alt=""
+                                        width={62}
+                                        height={62}
+                                        className="object-contain"
+                                    />
+                                </span>
+                                <span className="grid flex-1 text-left leading-tight group-data-[collapsible=icon]:hidden">
+                                    <span className="truncate font-medium">
+                                        ChaiCodeAIReview
                                     </span>
-                                    <span className="grid flex-1 text-left leading-tight group-data-[collapsible=icon]:hidden">
-                                        <span className="truncate font-medium">
-                                            ChaiCodeAIReview
-                                        </span>
-                                    </span>
-                                </Link>
-                            }
-                        />
+                                </span>
+                            </Link>
+                        </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
