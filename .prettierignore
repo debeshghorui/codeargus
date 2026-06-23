@@ -1,0 +1,19 @@
+dist/
+out/
+build/
+node_modules/
+.next/
+.turbo/
+coverage/
+
+# Lock files — auto-generated, don't format
+bun.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Package manager caches
+.pnpm-store/
+
+# Next.js auto-generated
+next-env.d.ts
