@@ -6,6 +6,12 @@ node_modules/
 .turbo/
 coverage/
 
+# Prisma
+lib/generated/prisma/
+
+# Secrets keys
+*.pem
+
 # Lock files — auto-generated, don't format
 bun.lock
 package-lock.json
