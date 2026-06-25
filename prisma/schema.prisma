@@ -39,8 +39,31 @@ model GithubInstallation {
 
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
   
   @@map("github_installation")
+}
+
+model PullRequest {
+  id             String @id @default(cuid())
+  installationId Int
+  repoFullName   String // "owner/repo"
+  prNumber       Int
+  title          String
+  authorLogin    String?
+  headSha        String  // latest commit on the PR branch
+  baseBranch     String
+  status         String @default("pending") // pending | processing | reviewed | rate_limited
+  reviewComment  String? // AI-generated markdown saved after review is complete
+
+  reviewedAt     DateTime?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  @@unique([repoFullName, prNumber])
+  @@map("pull_request")
 }
 
 model Session {

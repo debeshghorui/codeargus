@@ -43,7 +43,10 @@ export function DashboardNav() {
                                     tooltip={item.title}
                                 >
                                     <Link href={item.href}>
-                                        <HugeiconsIcon icon={item.icon} strokeWidth={2} />
+                                        <HugeiconsIcon
+                                            icon={item.icon}
+                                            strokeWidth={2}
+                                        />
                                         <span>{item.title}</span>
                                     </Link>
                                 </SidebarMenuButton>
