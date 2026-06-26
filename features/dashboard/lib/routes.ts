@@ -1,5 +1,6 @@
 import {
     DashboardSquare01Icon,
+    FolderLibraryIcon,
     GitBranchIcon,
     GithubIcon,
     Settings01Icon,
@@ -25,7 +26,7 @@ export const DASHBOARD_NAV_ITEMS = [
     {
         title: "Repositories",
         href: DASHBOARD_ROUTES.repos,
-        icon: GitBranchIcon,
+        icon: FolderLibraryIcon,
     },
     {
         title: "PullRequests",

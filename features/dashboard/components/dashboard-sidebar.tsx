@@ -48,7 +48,7 @@ export function DashboardSidebar({
                                 </span>
                                 <span className="grid flex-1 text-left leading-tight group-data-[collapsible=icon]:hidden">
                                     <span className="truncate font-medium">
-                                        ChaiCodeAIReview
+                                        Code Argus
                                     </span>
                                 </span>
                             </Link>
