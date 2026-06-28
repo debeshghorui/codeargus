@@ -132,3 +132,427 @@
         @apply font-mono;
     }
 }
+
+/* Landing micro-interactions — uses existing palette tokens only */
+@keyframes landing-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes landing-scan {
+    0% {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(420%);
+        opacity: 0;
+    }
+}
+
+@keyframes landing-pulse-ring {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 0%, transparent);
+    }
+    50% {
+        box-shadow: 0 0 0 6px color-mix(in oklch, var(--primary) 18%, transparent);
+    }
+}
+
+@keyframes landing-dot-breathe {
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes landing-diff-flash {
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.08);
+    }
+}
+
+@keyframes landing-comment-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes landing-sparkle {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes landing-shimmer {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+.landing-reveal {
+    opacity: 0;
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.landing-reveal[data-visible="true"] {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.landing-hero-in {
+    opacity: 0;
+    animation: landing-comment-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+.landing-nav-link {
+    @apply relative text-xs text-muted-foreground transition-colors duration-200 hover:text-foreground;
+}
+
+.landing-nav-link-line {
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 ease-out;
+}
+
+.group\/nav:hover .landing-nav-link-line,
+.group\/nav:focus-visible .landing-nav-link-line {
+    @apply w-full;
+}
+
+.landing-hover-lift {
+    @apply transition-all duration-300 ease-out;
+}
+
+.landing-hover-lift:hover {
+    @apply -translate-y-1 ring-1 ring-primary/25;
+}
+
+.landing-float {
+    animation: landing-float 5s ease-in-out infinite;
+}
+
+.landing-float-delayed {
+    animation: landing-float 5s ease-in-out infinite;
+    animation-delay: 1.4s;
+}
+
+.landing-scan-line {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        color-mix(in oklch, var(--primary) 35%, transparent),
+        transparent
+    );
+    animation: landing-scan 4s ease-in-out infinite;
+}
+
+.landing-ai-avatar {
+    animation: landing-pulse-ring 2.5s ease-in-out infinite;
+}
+
+.landing-dot {
+    animation: landing-dot-breathe 2s ease-in-out infinite;
+}
+
+.landing-diff-highlight {
+    animation: landing-diff-flash 3s ease-in-out infinite;
+}
+
+.landing-comment-text {
+    animation: landing-comment-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+
+.landing-sparkle-icon {
+    animation: landing-sparkle 2.5s ease-in-out infinite;
+}
+
+.landing-stat-value {
+    background: linear-gradient(
+        90deg,
+        var(--foreground) 0%,
+        color-mix(in oklch, var(--primary) 70%, var(--foreground)) 50%,
+        var(--foreground) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: landing-shimmer 6s linear infinite;
+}
+
+.landing-grid-bg {
+    background-image:
+        linear-gradient(
+            to right,
+            color-mix(in oklch, var(--border) 70%, transparent) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            color-mix(in oklch, var(--border) 70%, transparent) 1px,
+            transparent 1px
+        );
+    background-size: 44px 44px;
+    mask-image: radial-gradient(
+        ellipse at 50% 0%,
+        black 15%,
+        transparent 70%
+    );
+}
+
+.landing-arrow-nudge {
+    @apply transition-transform duration-300 ease-out;
+}
+
+.group:hover .landing-arrow-nudge {
+    @apply translate-x-1;
+}
+
+.landing-comparison-row {
+    @apply transition-colors duration-200;
+}
+
+.landing-comparison-row:hover {
+    @apply bg-muted/30;
+}
+
+.landing-comparison-row:hover .landing-comparison-highlight {
+    @apply bg-primary/10;
+}
+
+.landing-step-arrow {
+    animation: landing-float 3s ease-in-out infinite;
+}
+
+.landing-typing-dots::after {
+    content: "";
+    animation: landing-dot-breathe 1.4s ease-in-out infinite;
+}
+
+.landing-headline {
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.025em;
+}
+
+.landing-section-rule {
+    @apply mx-auto mt-4 flex items-center justify-center gap-3;
+}
+
+.landing-section-rule::before,
+.landing-section-rule::after {
+    content: "";
+    @apply h-px w-12 bg-border sm:w-16;
+}
+
+.landing-section-rule-dot {
+    @apply size-1 shrink-0 bg-primary;
+}
+
+.landing-pr-glow {
+    position: relative;
+}
+
+.landing-pr-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(
+        135deg,
+        color-mix(in oklch, var(--primary) 40%, transparent),
+        transparent 40%,
+        transparent 60%,
+        color-mix(in oklch, var(--primary) 25%, transparent)
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.landing-pr-glow::after {
+    content: "";
+    position: absolute;
+    inset: -24px;
+    background: radial-gradient(
+        ellipse at 50% 60%,
+        color-mix(in oklch, var(--primary) 12%, transparent),
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes landing-marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.landing-marquee {
+    @apply relative overflow-hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 12%,
+        black 88%,
+        transparent
+    );
+}
+
+.landing-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 3rem;
+    animation: landing-marquee 28s linear infinite;
+}
+
+.landing-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.landing-step-rail {
+    position: absolute;
+    top: 2.75rem;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in oklch, var(--border) 80%, transparent) 15%,
+        color-mix(in oklch, var(--primary) 35%, var(--border)) 50%,
+        color-mix(in oklch, var(--border) 80%, transparent) 85%,
+        transparent
+    );
+}
+
+.landing-pain-card {
+    @apply relative overflow-hidden border border-border bg-card transition-all duration-300;
+}
+
+.landing-pain-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: color-mix(in oklch, var(--destructive) 55%, transparent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.landing-pain-card:hover::before {
+    transform: scaleY(1);
+}
+
+.landing-pain-card:hover {
+    @apply border-border bg-muted/30 shadow-sm;
+}
+
+.landing-feature-spotlight {
+    @apply relative overflow-hidden;
+}
+
+.landing-feature-spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at 0% 0%,
+        color-mix(in oklch, var(--primary) 8%, transparent),
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.landing-avatar {
+    @apply flex size-8 shrink-0 items-center justify-center border border-border bg-primary/10 font-mono text-[10px] font-medium text-primary;
+}
+
+.landing-cta-grid {
+    background-image:
+        linear-gradient(
+            to right,
+            color-mix(in oklch, var(--border) 50%, transparent) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            color-mix(in oklch, var(--border) 50%, transparent) 1px,
+            transparent 1px
+        );
+    background-size: 32px 32px;
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 20%,
+        transparent 75%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .landing-hero-in,
+    .landing-float,
+    .landing-float-delayed,
+    .landing-scan-line,
+    .landing-ai-avatar,
+    .landing-dot,
+    .landing-diff-highlight,
+    .landing-comment-text,
+    .landing-sparkle-icon,
+    .landing-stat-value,
+    .landing-step-arrow,
+    .landing-marquee-track {
+        animation: none !important;
+    }
+
+    .landing-hover-lift:hover {
+        transform: none;
+    }
+
+    .landing-pain-card::before {
+        transform: scaleY(1);
+    }
+}
