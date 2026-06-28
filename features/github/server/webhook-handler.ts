@@ -1,5 +1,6 @@
 import { savePullRequest } from "@/features/reviews/server/save-pull-request";
 import { getGithubApp } from "../utils/github-app";
+import { consoleLog } from "@/devoloper";
 
 const REVIEWABLE_ACTIONS = ["opened", "synchronize", "reopened"];
 
@@ -30,11 +31,11 @@ async function verifySignature(payload: string, signature: string) {
 export async function handleGithubWebhook(request: Request) {
     const body = await request.text();
 
-    // console.log(body);
+    consoleLog("GitHub", "Webhook body", body);
 
     const signature = request.headers.get("x-hub-signature-256");
-    console.log( "headers", request.headers);
-    console.log("--------------------------------");
+    
+    consoleLog("GitHub", "Webhook headers", request.headers);
     
     
     if (!signature) {
@@ -57,7 +58,7 @@ export async function handleGithubWebhook(request: Request) {
 
     const event = JSON.parse(body) as PullRequestWebhookPayload;
 
-    console.log("event", event);
+    consoleLog("GitHub", "Pull request webhook received", event);
 
     if (!REVIEWABLE_ACTIONS.includes(event.action)) {
         return Response.json({ received: true});
