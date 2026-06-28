@@ -31,7 +31,12 @@ function SubmitButton() {
     }
 
     return (
-        <Button type="submit" className="w-full" size="lg" disabled={pending}>
+        <Button
+            type="submit"
+            className="h-11 w-full transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99]"
+            size="lg"
+            disabled={pending}
+        >
             {buttonIcon}
             {buttonLabel}
         </Button>

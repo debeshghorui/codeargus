@@ -6,9 +6,6 @@ export default async function AuthLayout({
     children: React.ReactNode;
 }) {
     await requireUnauth();
-    return (
-        <div className="flex h-screen flex-col items-center justify-center">
-            {children}
-        </div>
-    );
+
+    return children;
 }
